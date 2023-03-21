@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DKRREST.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class MusicRsController : ControllerBase
     {
         private readonly MusicRsRepository record = new MusicRsRepository();
@@ -19,6 +19,12 @@ namespace DKRREST.Controllers
         public IEnumerable<MusicRecord> GetAll()
         {
             return record.GetAll();
+        }
+
+        [HttpGet("{id}")]
+        public MusicRecord? Get(int id)
+        {
+            return record.GetById(id);
         }
     }
 }
