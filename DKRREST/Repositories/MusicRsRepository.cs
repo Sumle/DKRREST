@@ -1,4 +1,5 @@
 ﻿using DKRREST.Models;
+using System.Globalization;
 
 namespace DKRREST.Repositories
 {
@@ -13,9 +14,15 @@ namespace DKRREST.Repositories
             new MusicRecord() {Id = _nextID++, Title = "Ghost", Artist = "Justin Bieber", Duration = 200, publicationYear = 2021}
         };
 
-        public List<MusicRecord> GetAll()
+        public List<MusicRecord> GetAll(string title)
         {
-            return new List<MusicRecord>(Data);
+            List<MusicRecord> record = new List<MusicRecord>(Data);
+
+            if (title != null)
+            {
+                record = record.FindAll(record => record.Title != null && record.Title.StartsWith(title));
+            }
+            return record;
         }
 
         public MusicRecord? GetById(int id)

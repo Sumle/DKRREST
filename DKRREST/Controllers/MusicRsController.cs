@@ -16,9 +16,9 @@ namespace DKRREST.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<MusicRecord> GetAll()
+        public IEnumerable<MusicRecord> GetAll([FromQuery] string title)
         {
-            return record.GetAll();
+            return record.GetAll(title);
         }
 
         [HttpGet("{id}")]
