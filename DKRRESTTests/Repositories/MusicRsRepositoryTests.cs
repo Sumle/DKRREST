@@ -5,17 +5,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DKRREST.Models;
 
 namespace DKRREST.Repositories.Tests
 {
     [TestClass()]
     public class MusicRsRepositoryTests
     {
+        MusicRsRepository repo = new MusicRsRepository();
+
         [TestMethod()]
         public void GetAllTest()
         {
-            MusicRsRepository record = new();
-            Assert.AreEqual(2, record.GetAll().Count);
+            List<MusicRecord> records = repo.GetAll();
+            Assert.AreEqual(records.Count, 3);
+            Assert.AreEqual(records[2].Title, "Ghost");
         }
     }
 }
