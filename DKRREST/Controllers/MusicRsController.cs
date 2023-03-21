@@ -26,5 +26,11 @@ namespace DKRREST.Controllers
         {
             return record.GetById(id);
         }
+
+        [HttpPost]
+        public MusicRecord? Post([FromBody] MusicRecord newRecord)
+        {
+            return record.Add(newRecord);
+        }
     }
 }

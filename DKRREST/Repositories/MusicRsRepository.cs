@@ -34,5 +34,12 @@ namespace DKRREST.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public MusicRecord? Add(MusicRecord newRecord)
+        {
+            newRecord.Id = _nextID++;
+            Data.Add(newRecord);
+            return newRecord;
+        }
     }
 }
