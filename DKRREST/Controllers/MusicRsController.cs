@@ -16,7 +16,7 @@ namespace DKRREST.Controllers
         }
 
         [HttpGet]
-        public ActionResult <IEnumerable<MusicRecord>> GetAll([FromQuery] string? title)
+        public ActionResult<IEnumerable<MusicRecord>> GetAll([FromQuery] string? title)
         {
             return record.GetAll(title);
         }
@@ -31,6 +31,22 @@ namespace DKRREST.Controllers
         public MusicRecord? Post([FromBody] MusicRecord newRecord)
         {
             return record.Add(newRecord);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult<MusicRecord?> Put(int id, [FromBody] MusicRecord update)
+        {
+            return record.Update(id, update);
+        }
+
+        // DELETE api/<PokemonsController>/5
+        [HttpDelete("{id}")]
+        public ActionResult<MusicRecord?> Delete(int id)
+        {
+            MusicRecord? deleteR = record.GetById(id);
+            string deleteRTitle = deleteR.Title;
+            record.Delete(id);
+            return Ok($"{deleteRTitle} was deleted");
         }
     }
 }

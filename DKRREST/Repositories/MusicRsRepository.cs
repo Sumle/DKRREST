@@ -30,16 +30,16 @@ namespace DKRREST.Repositories
             return Data.Find(record => record.Id == id);
         }
 
-        public List<MusicRecord> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
         public MusicRecord? Add(MusicRecord newRecord)
         {
             newRecord.Id = _nextID++;
             Data.Add(newRecord);
             return newRecord;
+        }
+
+        public List<MusicRecord>? GetAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }

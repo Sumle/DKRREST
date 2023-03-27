@@ -17,7 +17,7 @@ namespace DKRREST.Repositories.Tests
         [TestMethod()]
         public void GetAllTest()
         {
-            List<MusicRecord> records = repo.GetAll();
+            List<MusicRecord>? records = repo.GetAll();
             Assert.AreEqual(records.Count, 3);
             Assert.AreEqual(records[2].Title, "Ghost");
         }
