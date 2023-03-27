@@ -41,5 +41,27 @@ namespace DKRREST.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public MusicRecord? Delete(int id)
+        {
+            MusicRecord? record = GetById(id);
+            if (record == null) return null;
+            Data.Remove(record);
+            return record;
+        }
+
+        public MusicRecord? Update(int id, MusicRecord update)
+        {
+            MusicRecord? updateR = GetById(id);
+            if (updateR == null)
+            {
+                return null;
+            }
+            updateR.Title = update.Title;
+            updateR.Artist = update.Artist;
+            updateR.Duration = update.Duration;
+            updateR.publicationYear = update.publicationYear;
+            return updateR;
+        }
     }
 }
